@@ -1,4 +1,4 @@
-FROM node:14.18.2
+FROM node:14-buster-slim
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
