@@ -7,7 +7,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - env
       - aws --version
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 484912964803.dkr.ecr.ap-south-1.amazonaws.com
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 484912964803.dkr.ecr.ap-south-1.amazonaws.com
       #$(aws ecr get-login --no-include-email $ap-south-1)
       - REPOSITORY_URI=484912964803.dkr.ecr.ap-south-1.amazonaws.com/node
       # COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-10)
