@@ -8,9 +8,9 @@ phases:
       - env
       - aws --version
       - docker login --username ourusername --password ourpassword
-      - $(aws ecr get-login --no-include-email --region ap-south-1)
+      - $(aws ecr get-login --no-include-email --region us-east-1)
       #$(aws ecr get-login --no-include-email $ap-south-1)
-      - REPOSITORY_URI=484912964803.dkr.ecr.ap-south-1.amazonaws.com/node
+      - REPOSITORY_URI=067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
       #COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-17)
       #IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
@@ -18,16 +18,16 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest 484912964803.dkr.ecr.ap-south-1.amazonaws.com/node
+      - docker tag $REPOSITORY_URI:latest 067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       #docker push $REPOSITORY_URI:latest
       #docker push $REPOSITORY_URI:$IMAGE_TAG
-      - docker push 484912964803.dkr.ecr.ap-south-1.amazonaws.com/node
+      - docker push 067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
       - echo Writing image definitions file...
-      - printf '[{"name":"node","imageUri":"%s"}]' 484912964803.dkr.ecr.ap-south-1.amazonaws.com/node:latest > imagedefinitions.json
+      - printf '[{"name":"node","imageUri":"%s"}]' 067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1:latest > imagedefinitions.json
       - cat imagedefinitions.json 
 artifacts:
     files: imagedefinitions.json
