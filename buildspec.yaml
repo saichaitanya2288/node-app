@@ -7,6 +7,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - env
       - aws --version
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 067726513902.dkr.ecr.us-east-1.amazonaws.com
       - docker login --username saichaitanya2288 --password Chaitanya@401
       - aws ecr get-login  us-east-1
       - REPOSITORY_URI=067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
