@@ -21,7 +21,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on 'date'
-      - echo Pushing the Docker images...
+      #echo Pushing the Docker images...
       #docker push $REPOSITORY_URI:latest
       #docker push $REPOSITORY_URI:$IMAGE_TAG
       #docker tag node:latest 484912964803.dkr.ecr.ap-south-1.amazonaws.com/node:latest
