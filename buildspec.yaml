@@ -16,15 +16,15 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
-      - docker tag $REPOSITORY_URI:$IMAGE_TAG $484912964803.dkr.ecr.ap-south-1.amazonaws.com/node:$latest
+      - docker build -t $484912964803.dkr.ecr.ap-south-1.amazonaws.com/node:latest .
+      #docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       #docker push $REPOSITORY_URI:latest
       #docker push $REPOSITORY_URI:$IMAGE_TAG
-      - docker push $484912964803.dkr.ecr.ap-south-1.amazonaws.com/$$REPOSITORY_URI:$IMAGE_TAG
+      - docker push $484912964803.dkr.ecr.ap-south-1.amazonaws.com/$REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$DEFAULT_REGION.amazonaws.com/$$REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json 
