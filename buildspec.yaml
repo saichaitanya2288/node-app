@@ -26,7 +26,7 @@ phases:
       #docker push $REPOSITORY_URI:$IMAGE_TAG
       - docker push 067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
       - echo Writing image definitions file...
-      - printf '[{"name":"interstellar1","imageUri":"%s"}]' 067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1:latest > imagedefinitions.json
+      - printf '[{"name":"nodecontainer","imageUri":"%s"}]' 067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1:latest > imagedefinitions.json
       - cat imagedefinitions.json 
 artifacts:
     files: imagedefinitions.json
