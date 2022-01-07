@@ -8,6 +8,7 @@ phases:
       - env
       - aws --version
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 067726513902.dkr.ecr.us-east-1.amazonaws.com
+      - sudo systemctl start docker
       - docker login --username saichaitanya2288 --password Chaitanya@401
       - REPOSITORY_URI=067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
       #COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-17)
