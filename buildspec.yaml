@@ -5,13 +5,11 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws --version
-      - docker login --username saichaitanya2288 --password chaitanya@401
-      - $(aws ecr get-login-password --region us-east-1) 
-      #docker login --username AWS --password-stdin 067726513902.dkr.ecr.us-east-1.amazonaws.com
+      - aws --version- $(aws ecr get-login-password --region us-east-1) 
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 067726513902.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=067726513902.dkr.ecr.us-east-1.amazonaws.com/interstellar1
-      #COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-17)
-      #IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-17)
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
